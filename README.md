@@ -13,3 +13,17 @@ Recipe App API Source Code
 
 ## Flake7
     Lint Tool
+
+## Test
+* All test files must begin with the word "test"
+* All test cases must begin with the word "test".
+* see the runTest script to run test.
+
+## Create app
+docker-compose run app sh -c "python manage.py startapp core"
+
+## Database creation
+* create table, see models.py
+* run migrations, see makeMigration
+* model will appear under migrations dir.
+* if you change model, the run migrations.
