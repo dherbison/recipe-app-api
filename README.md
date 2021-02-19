@@ -11,7 +11,7 @@ Recipe App API Source Code
 ## GitHUB
     Use GIT_CURL_VERBOSE=1 to see what SSH is upto when something like "git push" does not work.
 
-## Flake7
+## Flake8
     Lint Tool
 
 ## Test
@@ -28,7 +28,19 @@ docker-compose run app sh -c "python manage.py startapp core"
 * model will appear under migrations dir.
 * if you change model, the run migrations.
 * SQLLITE is used by default
+### Create Super User
+The command _**docker-compose run app sh -c "python manage.py createsuperuser"**_, DID NOT WORK.
 
+So i ran:
+* _**docker-compose run app sh -c "python manage.py shell"**_
+
+then typed in, when the shell opened:
+* from django.contrib.auth import get_user_model
+* User = get_user_model()
+* User.objects.create_superuser('danielherbison@gmail.com', 'Edenreal')
+
+use whatever you want for user/pw.
+  
 ## Files
 * if \_\_init\_\_.py is missing from a dir, python will ignore that dir.
 
