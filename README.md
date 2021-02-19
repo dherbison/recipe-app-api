@@ -27,6 +27,8 @@ docker-compose run app sh -c "python manage.py startapp core"
 * run migrations, see makeMigration
 * model will appear under migrations dir.
 * if you change model, the run migrations.
+* SQLLITE is used by default
 
 ## Files
 * if \_\_init\_\_.py is missing from a dir, python will ignore that dir.
+
