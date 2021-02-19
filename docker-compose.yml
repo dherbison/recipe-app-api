@@ -1,0 +1,18 @@
+version: "3"
+# at command line run "docker-compose build"
+#
+# to run: docker-compose run app sh -c "django-admin.py startproject app ."  ## runs "app" service below.
+services:
+  app:
+    # root project dir
+    build:
+      context: .
+    # map container port to local port
+    ports:
+        - "8000:8000"
+    # map local app dir to docker dir
+    volumes:
+      - ./app:/app
+    # command to run at docker startup
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
