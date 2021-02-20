@@ -12,9 +12,10 @@ class AdminSiteTests(TestCase):
             password='pawsre24343'
         )
         self.client.force_login(self.admin_user)
-        self.user = get_user_model().objects.create_user(email='tset@fasfdsf.com',
-                                                         password='sfafsd2323',
-                                                         name='test user full name')
+        self.user = get_user_model().objects.create_user(
+            email='tset@fasfdsf.com',
+            password='sfafsd2323',
+            name='test user full name')
 
     def test_users_listed(self):
         """ reverse creates URLs """
@@ -26,7 +27,7 @@ class AdminSiteTests(TestCase):
 
     def test_user_change_page(self):
         # /admin/core/user/<user id>
-        url = reverse('admin:core_user_change',args=[self.user.id])
+        url = reverse('admin:core_user_change', args=[self.user.id])
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)

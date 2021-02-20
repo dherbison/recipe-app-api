@@ -19,15 +19,11 @@ Recipe App API Source Code
 * All test cases must begin with the word "test".
 * see the runTest script to run test.
 
-## Create app
-docker-compose run app sh -c "python manage.py startapp core"
-
-## Database creation
-* create table, see models.py
-* run migrations, see makeMigration
-* model will appear under migrations dir.
-* if you change model, the run migrations.
-* SQLLITE is used by default
+## Docker
+### Create app
+docker-compose run --rm app sh -c "python manage.py startapp core".  The "--rm" is optional.
+### Build app
+docker-compose build
 ### Create Super User
 The command _**docker-compose run app sh -c "python manage.py createsuperuser"**_, DID NOT WORK.
 
@@ -40,6 +36,21 @@ then typed in, when the shell opened:
 * User.objects.create_superuser('danielherbison@gmail.com', 'Edenreal')
 
 use whatever you want for user/pw.
+### Create DB (Migration)
+docker-compose run app sh -c "python manage.py makemigrations core"
+### Run Test
+docker-compose run app sh -c "python manage.py test && flake8"
+### Start 
+docker-compose up
+
+## Database
+### Creation
+* create table, see models.py
+* run migrations, see makeMigration
+* model will appear under migrations dir.
+* if you change model, the run migrations.
+* SQLLITE is used by default
+
   
 ## Files
 * if \_\_init\_\_.py is missing from a dir, python will ignore that dir.
