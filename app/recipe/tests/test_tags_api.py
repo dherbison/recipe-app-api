@@ -49,10 +49,11 @@ class PrivateTagsApiTest(TestCase):
             'password123'
         )
         Tag.objects.create(user=user2, name='Fruity')
-        Tag.objects.create(user=self.user, name='Vegan')
-        Tag.objects.create(user=self.user, name='Dessert')
+        tag = Tag.objects.create(user=self.user, name='Vegan')
+        tag2 = Tag.objects.create(user=self.user, name='Dessert')
 
         res = self.client.get(TAGS_URL)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 2)
         self.assertEqual(res.data[0]['name'], tag.name)
+        self.assertEqual(res.data[1]['name'], tag2.name)
