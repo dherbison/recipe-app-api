@@ -63,7 +63,7 @@ class PrivateIngredientsAPITests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 1)
-        self.assertEqual(res.data[1]['name'], ingredient.name)
+        self.assertEqual(res.data[0]['name'], ingredient.name)
 
     def test_create_ingredient_successful(self):
         """Test creating a new ingredient"""
