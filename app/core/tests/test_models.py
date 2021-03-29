@@ -44,3 +44,10 @@ class ModelTests(TestCase):
         # this set() fx is the __str__ function in the
         # Tag.__str__ method in the models.py file.
         self.assertEqual(str(tag), tag.name)
+
+    def test_ingredient_str(self):
+        ingredient = models.Ingredient.objects.create(
+            user=sample_user(),
+            name='Cucumber'
+        )
+        self.assertEqual(str(ingredient), ingredient.name)
