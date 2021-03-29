@@ -51,7 +51,12 @@ docker-compose up
 * if you change model, the run migrations.
 * SQLLITE is used by default
 
-  
+## The app didn't run
+i had to run:
+docker-compose down
+docker-compose run --rm app sh -c "python manage.py migrate"
+docker-compose up
+
 ## Files
 * if \_\_init\_\_.py is missing from a dir, python will ignore that dir.
 
